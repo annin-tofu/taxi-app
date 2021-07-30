@@ -28,7 +28,7 @@ export const { setOrigin, setDestination, setTravelTimeInformation } =
   navSlice.actions;
 
 //40:00
-//Selectors
+//Selectors . to grab information from a data layer
 
 export const selectOrigin = (state) => state.nav.origin;
 export const selectDestination = (state) => state.nav.destination;

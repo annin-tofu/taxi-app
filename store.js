@@ -1,5 +1,6 @@
-import { confireeStore } from "@reduxjs/toolkit";
-import NavReducer from "./slices/navSlice";
+// https://redux.js.org
+import { configureStore } from "@reduxjs/toolkit";
+import navReducer from "./slices/navSlice";
 
 export const store = configureStore({
   reducer: {
