@@ -1,4 +1,4 @@
-// use snippet _rnfce
+// use snippet _rnfes
 import React from "react";
 //SafeAreaView is for avoiding the topnotch you see on the top of iphones
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
