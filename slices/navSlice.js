@@ -1,10 +1,12 @@
-// https://redux.js.org
-
+// https://redux.js.org/tutorials/quick-start#create-a-redux-state-slice jump to "Create a Redux State Slice" and features/counter/counterSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  //origin: where you are from
   origin: null,
+  // destination: where you want to go
   destination: null,
+  //time takes to get to A to B
   travelTimeInformation: null,
 };
 

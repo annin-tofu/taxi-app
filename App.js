@@ -7,7 +7,8 @@ import { store } from "./store";
 
 export default function App() {
   return (
-    // store to setup gloval datalayer
+    // store to setup global data-layer
+    //Provider is a wrapper, inject the app and and levels the app
     <Provider store={store}>
       <View style={styles.container}>
         <Text>Lets make taxi-app</Text>
