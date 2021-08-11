@@ -29,12 +29,26 @@ const HomeScreen = () => {
           }}
         />
 
-        {/* Render GooglePlacesAutocomplete  */}
+        {/* Render GooglePlacesAutocomplete https://www.npmjs.com/package/react-native-google-places-autocomplete */}
         <GooglePlacesAutocomplete
           placeholder="Where from?"
-          nearbyPlacesAPI="GooglePlacesSeach" //this allow to search for different places in Google's directory
+          // styling 01:51:00
+          styles={{
+            container: {
+              flex: 0,
+            },
+            textInput: {
+              fontSize: 18,
+            },
+          }}
+          query={{
+            key: GOOGLE_MAPS_APIKEY,
+            language: "en",
+          }}
+          nearbyPlacesAPI="GooglePlacesSearch" //this allow to search for different places in Google's directory
           debouce={400} // only after stop typing in the input for 400ms, it will execute search. (you do not want to fire search every single type)
         />
+
         <NavOptions />
       </View>
     </SafeAreaView>
