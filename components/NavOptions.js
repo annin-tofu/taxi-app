@@ -48,14 +48,14 @@ const NavOptions = () => {
               style={{ width: 120, height: 120, resizeMode: "contain" }} //resizeMode: "contain" to keep original aspect ratio
               source={{ uri: item.image }} //Do not use "src". in RN, you use "source".
             />
+            <Text style={tw`mt-2 text-lg font-semibold`}>{item.title}</Text>
+            <Icon
+              type="antdesign"
+              color="white"
+              name="arrowright"
+              style={tw`p-2 bg-black rounded-full w-10 mt-4`}
+            />
           </View>
-          <Text style={tw`mt-2 text-lg font-semibold`}>{item.title}</Text>
-          <Icon
-            type="antdesign"
-            color="white"
-            name="arrowright"
-            style={tw`p-2 bg-black rounded-full w-10 mt-4`}
-          />
         </TouchableOpacity>
       )} //and for each items what should we do. it is defined here in arrow function.
     />

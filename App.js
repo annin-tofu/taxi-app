@@ -35,7 +35,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
-          {/* Stack.Navigator is like Router in React */}
+          {/* Stack.Navigator acts like Router in React */}
           <Stack.Navigator>
             <Stack.Screen
               name="HomeScreen"
