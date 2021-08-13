@@ -2,17 +2,26 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import Map from "../components/Map";
-// import React-Native-Mapview https://github.com/react-native-maps/react-native-maps 02:03:00
-import MapView from "react-native-maps";
+import NavigateCard from "../components/NavigateCard";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const MapScreen = () => {
   return (
     <View>
-      <Text>Here is the map stuff...</Text>
+      {/* Upper Half of MapScreen is for "Map" */}
       <View style={tw`h-1/2`}>
         <Map />
       </View>
-      <View style={tw`h-1/2`}></View>
+      {/* Bottom Half of MapScreen is for "Stack.Navigator" 02:16:50*/}
+      <View style={tw`h-1/2`}>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="NavigateCard"
+            component={NavigateCard}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </View>
     </View>
   );
 };
