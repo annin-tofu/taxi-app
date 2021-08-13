@@ -15,7 +15,7 @@ export const navSlice = createSlice({
   name: "nav",
   initialState,
   //within Reducer, there are 3 actions "setOrigin", "setDestination", and "setTravelTimeInformation",
-  reducer: {
+  reducers: {
     setOrigin: (state, action) => {
       state.origin = action.payload;
     },
@@ -28,7 +28,7 @@ export const navSlice = createSlice({
   },
 });
 
-//39:14, Destructuring. 
+//39:14, Destructuring.
 export const { setOrigin, setDestination, setTravelTimeInformation } =
   navSlice.actions;
 
