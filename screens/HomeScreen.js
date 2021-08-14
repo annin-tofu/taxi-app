@@ -18,6 +18,7 @@ import { GOOGLE_MAPS_APIKEY } from "@env";
 //REDUX stuff...to push info to data layer. 01:55:00
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
+import NavFavorites from "../components/NavFavorites";
 
 const HomeScreen = () => {
   //to push info to data layer. 01:55:00 "actions" allows you to change the data in the data layer. but we need to "dispatch" the action. think like dispatch is like a gun. it shoots the action into the data layer with the payload which has the information that you want to change/manupilate.
@@ -261,6 +262,7 @@ const HomeScreen = () => {
         />
 
         <NavOptions />
+        <NavFavorites />
       </View>
     </SafeAreaView>
   );

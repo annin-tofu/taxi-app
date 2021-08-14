@@ -56,6 +56,3 @@ for Icons, used React-Native-Elements
 // https://reactnativeelements.com/docs/
 // reactnativeelements.com 01:06:00 run $ npm install react-native-elements , then $ yarn add react-native-vector-icons
 // https://reactnativeelements.com/docs/
-
-1:50:00-
-2:00:00

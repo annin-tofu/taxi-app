@@ -1,12 +1,20 @@
 //rnfce
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete"; //02:21:50
 import { GOOGLE_MAPS_APIKEY } from "@env"; //02:21:50
 import { useDispatch } from "react-redux"; //REDUX  02:27:00
 import { setDestination } from "../slices/navSlice"; //REDUX 02:27:00
 import { useNavigation } from "@react-navigation/native";
+import NavFavorites from "./NavFavorites";
+import { Icon } from "react-native-elements/dist/icons/Icon";
 
 const NavigateCard = () => {
   const dispatch = useDispatch(); //REDUX. 02:26:50
@@ -48,6 +56,16 @@ const NavigateCard = () => {
             }}
           />
         </View>
+
+        {/* NavFavorite Component to be displayed 02:45:40 */}
+        <NavFavorites />
+      </View>
+
+      <View>
+        <TouchableOpacity>
+          <Icon name="car" type="font-awesome" color="white" size={16} />
+          <Text style={tw`text-white text-center`}>Rides</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
