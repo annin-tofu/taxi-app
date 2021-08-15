@@ -57,7 +57,7 @@ const NavigateCard = () => {
           />
         </View>
 
-        {/* NavFavorite Component to be displayed 02:45:40 */}
+        {/* NavFavorite Component to be displayed 024540 */}
         <NavFavorites />
       </View>
 

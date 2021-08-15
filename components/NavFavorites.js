@@ -1,3 +1,5 @@
+// NavFavourites for saved address for frequently used places. i.e. "Home" and "Work"
+
 import React from "react";
 import {
   FlatList,
