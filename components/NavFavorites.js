@@ -8,20 +8,20 @@ import {
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { useDispatch } from "react-redux";
-import tailwind from "tailwind-react-native-classnames";
+import tw from "tailwind-react-native-classnames";
 
 const data = [
   {
-    id: "3423",
-    icon: "home",
+    id: "123",
+    icon: "home", //as specified in react-native-elements's ICON
     location: "Home",
-    destination: "Code street, London, UK",
+    destination: "4-1-1 Ayase, Adachi-ku, Tokyo Japan",
   },
   {
-    id: "36567",
-    icon: "briefcase",
+    id: "456",
+    icon: "briefcase", //as specified in react-native-elements's ICON
     location: "Work",
-    destination: "Londone Eye, London, UK",
+    destination: "3-2-2 Marunouchi, Chiyoda-ku, Tokyo Japan",
   },
 ];
 
@@ -34,27 +34,39 @@ const NavFavorites = () => {
   return (
     <FlatList
       data={data}
+      //previously,
+      //  renderItem={({ item: { location, destination, icon } }) => (
+      //instead use below and use {item.location} instead of {location}, and also {item.destination} instead of {destination}
+      //   this will stop getting error
       renderItem={({ item }) => (
         <TouchableOpacity
-          style={tailwind`flex-row items-center py-3`}
+          style={tw`flex-row items-center py-3`}
           onPress={handlePress}
         >
           <Icon
-            style={tailwind`mr-4 rounded-full bg-gray-300 p-3`}
+            style={tw`mr-4 rounded-full bg-gray-300 p-3`}
             name={item.icon}
-            type="feather"
+            type="ionicon"
             color="white"
             size={18}
           />
           <View>
-            <Text style={tailwind`font-bold text-lg`}>{item.location}</Text>
-            <Text style={tailwind`text-gray-500`}>{item.destination}</Text>
+            {/* previously, above was set as
+      //  renderItem={({ item: { location, destination, icon } }) => ( ...
+      // but changed to 
+      renderItem={({ item }) => (
+          // and,
+      // {item.location} instead of {location}, and also {item.destination} instead of {destination}
+      this will stop getting error
+   */}
+            <Text style={tw`font-bold text-lg`}>{item.location}</Text>
+            <Text style={tw`text-gray-500`}>{item.destination}</Text>
           </View>
         </TouchableOpacity>
       )}
       keyExtractor={(item) => item.id.toString()}
       ItemSeparatorComponent={() => (
-        <View style={[tailwind`bg-gray-200`, { height: 0.5 }]} />
+        <View style={[tw`bg-gray-200`, { height: 0.5 }]} />
       )}
     />
   );
