@@ -1,5 +1,6 @@
 import React from "react";
-import { KeyboardAvoidingView, Text, View } from "react-native";
+import { KeyboardAvoidingView } from "react-native";
+// KeyboardAvoidingView will enable that when the keyboard is enabled, screen shits upward to avoid keyboard to hide items
 import { Provider } from "react-redux";
 import HomeScreen from "./screens/HomeScreen";
 import { store } from "./store";
