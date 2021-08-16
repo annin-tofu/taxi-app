@@ -3,15 +3,20 @@ import React, { useRef, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import tw from "tailwind-react-native-classnames";
-import { selectOrigin, selectDestination } from "../slices/navSlice";
+import {
+  selectOrigin,
+  selectDestination,
+  setTravelTimeInformation,
+} from "../slices/navSlice";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 
 const Map = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const mapRef = useRef(null); //02:30:00
+  const dispatch = useDispatch(); //032230
 
   // useEffect: this code RE-RUNS everytime "origin" and "destination" changes 02:31:00
   useEffect(() => {
@@ -31,7 +36,29 @@ const Map = () => {
     );
   }, [origin, destination]);
 
+  // for Implementing TravelTimeCalculation 031800
+  useEffect(() => {
+    const getTravelTime = async () => {
+      if (!origin || !destination) return;
+
+      fetch(
+        `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&key=${GOOGLE_MAPS_APIKEY}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+
+          dispatch(setTravelTimeInformation(data.rows[0].elements[0])); ////DO NOT FORGET TO IMPORT "setTravelTimeInformation" 032300
+        });
+    };
+
+    // for Implementing TravelTimeCalculation 031800
+    getTravelTime();
+  }, [origin, destination, GOOGLE_MAPS_APIKEY]);
+
   return (
+    //TODO ADD ARROW LEFT to nav back to Home?
+
     //https://github.com/react-native-maps/react-native-maps
     <MapView
       ref={mapRef} //02:30:00
