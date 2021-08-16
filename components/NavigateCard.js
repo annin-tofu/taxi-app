@@ -66,7 +66,7 @@ const NavigateCard = () => {
       >
         {/* RIDES TAB */}
         <TouchableOpacity
-          onPress={() => navigation.navigate("RideOptionsCard")}
+          onPress={() => navigation.navigate("RideOptionsCard")} //when pressed, the page will navigate you to RideOptionsCard 030000
           style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}
         >
           <Icon name="car" type="font-awesome" color="white" size={16} />
