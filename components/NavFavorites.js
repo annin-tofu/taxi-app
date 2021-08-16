@@ -42,7 +42,7 @@ const NavFavorites = () => {
       //   this will stop getting error
       renderItem={({ item }) => (
         <TouchableOpacity
-          style={tw`flex-row items-center py-3`}
+          style={tw`flex-row items-center p-3`}
           onPress={handlePress}
         >
           <Icon

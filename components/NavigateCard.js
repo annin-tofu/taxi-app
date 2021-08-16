@@ -23,7 +23,7 @@ const NavigateCard = () => {
   return (
     //flex-1: to flex the whole entire screen
     <SafeAreaView style={tw`bg-white flex-1`}>
-      <Text style={tw`text-center py-5 text-xl`}>Good Morning!</Text>
+      <Text style={tw`text-center py-5 text-xl`}>Your destination</Text>
 
       {/* View for GooglePlacesAPI for origin (where from?) 02:21:00 */}
       {/* flex-shrink : https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink */}
@@ -61,10 +61,29 @@ const NavigateCard = () => {
         <NavFavorites />
       </View>
 
-      <View>
-        <TouchableOpacity>
+      <View
+        style={tw`flex-row bg-white justify-evenly mt-auto border-t border-gray-100`} //border-t: add border on top
+      >
+        {/* RIDES TAB */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate("RideOptionsCard")}
+          style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}
+        >
           <Icon name="car" type="font-awesome" color="white" size={16} />
           <Text style={tw`text-white text-center`}>Rides</Text>
+        </TouchableOpacity>
+
+        {/* EATS TAB */}
+        <TouchableOpacity
+          style={tw`flex flex-row justify-between w-24 px-4 py-3 rounded-full`}
+        >
+          <Icon
+            name="fast-food-outline"
+            type="ionicon"
+            color="black"
+            size={16}
+          />
+          <Text style={tw`text-center`}>Eats</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
