@@ -72,7 +72,7 @@ const RideOptionsCard = () => {
         <Text style={tw`text-center py-5 text-xl`}>
           {/* https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/ */}
           {/* 032430 */}
-          Select a Ride - {travelTimeInformation?.distance.text}
+          Select a Ride - {travelTimeInformation?.distance?.text}
         </Text>
       </View>
 
@@ -96,7 +96,7 @@ const RideOptionsCard = () => {
             />
             <View style={tw`-ml-6`}>
               <Text style={tw`text-lg font-semibold`}>{title}</Text>
-              <Text>{travelTimeInformation?.duration.text} Travel Time</Text>
+              <Text>{travelTimeInformation?.duration?.text} Travel Time</Text>
             </View>
             <Text style={tw`text-lg`}>
               {/* if in U.K. use below...032900
@@ -119,7 +119,9 @@ const RideOptionsCard = () => {
         keyExtractor={(item) => item.id}
       />
 
-      <View //031415
+      {/* TODO >>Enable "Order the Taxi" */}
+
+      {/* <View //031415
         style={tw`mt-auto border-t border-gray-200`}
       >
         <TouchableOpacity
@@ -128,10 +130,10 @@ const RideOptionsCard = () => {
         >
           <Text style={tw`text-center text-white text-xl`}>
             {/* https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/ if car is "selected"*/}
-            Choose {selected?.title}
-          </Text>
+      {/* Choose {selected?.title} >>>(delete ">>>" before) */}
+      {/* </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 };

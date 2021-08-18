@@ -68,8 +68,8 @@ const NavigateCard = () => {
           />
         </View>
 
-        {/* NavFavorite Component to be displayed 024540 */}
-        <NavFavorites />
+        {/* TODO >> Add NavFavorite?? NavFavorite Component to be displayed 024540
+        <NavFavorites /> */}
       </View>
 
       <View

@@ -262,7 +262,9 @@ const HomeScreen = () => {
         />
 
         <NavOptions />
-        <NavFavorites />
+
+        {/* TODO>> Add NavFavourites?
+        <NavFavorites /> */}
       </View>
     </SafeAreaView>
   );
