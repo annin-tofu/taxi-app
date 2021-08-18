@@ -18,11 +18,22 @@ import { Icon } from "react-native-elements/dist/icons/Icon";
 
 const NavigateCard = () => {
   const dispatch = useDispatch(); //REDUX. 02:26:50
-  const navigation = useNavigation(); //02:27:30
+  const navigation = useNavigation(); //02:27:30 and also for Arrow back to navigate back to Home
 
   return (
     //flex-1: to flex the whole entire screen
     <SafeAreaView style={tw`bg-white flex-1`}>
+      {/* for Arrow Left to navigate back to Home */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("HomeScreen")}
+        style={[tw`absolute top-3 left-5 z-50 p-3 rounded-full`]}
+      >
+        <Icon
+          name="chevron-left" //Arrow Left
+          type="fontawesome"
+        />
+      </TouchableOpacity>
+
       <Text style={tw`text-center py-5 text-xl`}>Your destination</Text>
 
       {/* View for GooglePlacesAPI for origin (where from?) 02:21:00 */}

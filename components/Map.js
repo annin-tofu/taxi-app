@@ -1,6 +1,6 @@
 // _rnfce (react-native functional component w/ export)
 import React, { useRef, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +11,15 @@ import {
   setTravelTimeInformation,
 } from "../slices/navSlice";
 import { GOOGLE_MAPS_APIKEY } from "@env";
+import { useNavigation } from "@react-navigation/native"; //for Arrow Left to navigate back to Home
+import { Icon } from "react-native-elements/dist/icons/Icon";
 
 const Map = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const mapRef = useRef(null); //02:30:00
   const dispatch = useDispatch(); //032230
+  const navigation = useNavigation(); //for Arrow Left to navigate back to Home
 
   // useEffect: this code RE-RUNS everytime "origin" and "destination" changes 02:31:00
   useEffect(() => {
@@ -57,60 +60,71 @@ const Map = () => {
   }, [origin, destination, GOOGLE_MAPS_APIKEY]);
 
   return (
-    //TODO ADD ARROW LEFT to nav back to Home?
-
-    //https://github.com/react-native-maps/react-native-maps
-    <MapView
-      ref={mapRef} //02:30:00
-      style={tw`flex-1`} //Unless style is specified, MAP WILL NOT SHOW!!
-      mapType="mutedStandard"
-      initialRegion={{
-        latitude: origin.location.lat,
-        longitude: origin.location.lng,
-        latitudeDelta: 0.005,
-        longitudeDelta: 0.005,
-      }}
-    >
-      {/* If you have "Origin" and "Destination", then render MapViewDirections Component*/}
-      {origin && destination && (
-        <MapViewDirections
-          origin={origin.description}
-          destination={destination.description}
-          apikey={GOOGLE_MAPS_APIKEY} //If you have "origin" and "destination", then render <MapViewDirections /> 02:30:00
-          strokeWidth={3} //stroke here means "trip route" between origin and destination https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width
-          strokeColor="black"
+    <View style={tw`flex-1 relative`}>
+      {/* for Arrow Left to navigate back to Home */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Home")}
+        style={[tw`absolute top-3 left-5 z-50 p-3 rounded-full`]}
+      >
+        <Icon
+          name="chevron-left" //Arrow Left
+          type="fontawesome"
         />
-      )}
+      </TouchableOpacity>
 
-      {/* ORIGIN RED PIN MARKER */}
-      {/* "?" means, ONLY IF there is "origin"  */}
-      {origin?.location && (
-        // Marker for origin red pin
-        <Marker
-          coordinate={{
-            latitude: origin.location.lat,
-            longitude: origin.location.lng,
-          }}
-          title="Origin"
-          description={origin.description}
-          identifier="origin"
-        />
-      )}
+      {/* https://github.com/react-native-maps/react-native-maps */}
+      <MapView
+        ref={mapRef} //02:30:00
+        style={tw`flex-1`} //Unless style is specified, MAP WILL NOT SHOW!!
+        mapType="mutedStandard"
+        initialRegion={{
+          latitude: origin.location.lat,
+          longitude: origin.location.lng,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        }}
+      >
+        {/* If you have "Origin" and "Destination", then render MapViewDirections Component*/}
+        {origin && destination && (
+          <MapViewDirections
+            origin={origin.description}
+            destination={destination.description}
+            apikey={GOOGLE_MAPS_APIKEY} //If you have "origin" and "destination", then render <MapViewDirections /> 02:30:00
+            strokeWidth={3} //stroke here means "trip route" between origin and destination https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width
+            strokeColor="black"
+          />
+        )}
 
-      {/* DESTINATION RED PIN MARKER */}
-      {destination?.location && (
-        // Marker for destination red pin //02:30:00
-        <Marker
-          coordinate={{
-            latitude: destination.location.lat,
-            longitude: destination.location.lng,
-          }}
-          title="Destination"
-          description={destination.description}
-          identifier="destination"
-        />
-      )}
-    </MapView>
+        {/* ORIGIN RED PIN MARKER */}
+        {/* "?" means, ONLY IF there is "origin"  */}
+        {origin?.location && (
+          // Marker for origin red pin
+          <Marker
+            coordinate={{
+              latitude: origin.location.lat,
+              longitude: origin.location.lng,
+            }}
+            title="Origin"
+            description={origin.description}
+            identifier="origin"
+          />
+        )}
+
+        {/* DESTINATION RED PIN MARKER */}
+        {destination?.location && (
+          // Marker for destination red pin //02:30:00
+          <Marker
+            coordinate={{
+              latitude: destination.location.lat,
+              longitude: destination.location.lng,
+            }}
+            title="Destination"
+            description={destination.description}
+            identifier="destination"
+          />
+        )}
+      </MapView>
+    </View>
   );
 };
 
