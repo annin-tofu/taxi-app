@@ -18,13 +18,14 @@ const data = [
       "https://res.cloudinary.com/dhyagpwyl/image/upload/v1628492550/UberX_jmquwc.png",
     screen: "MapScreen", //change in future > this line means, If you click it goes to screen named "MapScreen"
   },
-  {
-    id: "456",
-    title: "Order food",
-    image:
-      "https://res.cloudinary.com/dhyagpwyl/image/upload/v1628492553/4feb745209cf7aba57463b20d27b61e3_khiljv.png",
-    screen: "EatsScreen", //change in future > this line means, If you click it goes to screen named "MapScreen"
-  },
+  // TO DO>> Add "EATS TAB"??
+  // {
+  //   id: "456",
+  //   title: "Order food",
+  //   image:
+  //     "https://res.cloudinary.com/dhyagpwyl/image/upload/v1628492553/4feb745209cf7aba57463b20d27b61e3_khiljv.png",
+  //   screen: "EatsScreen", //change in future > this line means, If you click it goes to screen named "MapScreen"
+  // },
 ];
 
 const NavOptions = () => {
